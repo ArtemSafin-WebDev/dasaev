@@ -1,0 +1,11 @@
+:root {
+  --text-color: #0e0e0e;
+  --content-padding: 6rem;
+  --container-width: 148rem;
+  --sf-pro: "SF Pro Display", sans-serif;
+  --playfair: "Playfair Display", serif;
+  --primary-color: #e7af8f;
+  @include breakpoint(mobile) {
+    --content-padding: 1.5rem;
+  }
+}

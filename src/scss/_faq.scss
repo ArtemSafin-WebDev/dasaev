@@ -1,0 +1,120 @@
+.faq {
+  @include blockWrapper;
+  padding-top: 10rem;
+  padding-bottom: 17rem;
+
+  @include breakpoint(mobile) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.faq__content {
+  @include blockContent;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: flex-start;
+
+  @include breakpoint(mobile) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+.faq__heading {
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -0.12rem;
+  text-transform: uppercase;
+  grid-column: 1 / 4;
+  padding-right: 3rem;
+
+  @include breakpoint(mobile) {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.06rem;
+    text-transform: uppercase;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+.faq__accordions {
+  grid-column: 4 / 8;
+}
+
+.faq__accordion {
+  border-bottom: 1px solid #b7b7b7;
+  &:first-child {
+    border-top: 1px solid #b7b7b7;
+  }
+}
+
+.faq__accordion-btn {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  gap: 2rem;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.036rem;
+  padding: 2rem 0;
+}
+
+.faq__accordion-btn-icon {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-left: auto;
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.9rem;
+    height: 1px;
+    transition: transform 0.2s;
+    background-color: currentColor;
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .js-accordion.active & {
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+    }
+  }
+}
+
+.faq__accordion-content {
+  height: 0;
+  overflow: hidden;
+}
+
+.faq__accordion-content-inner {
+  padding-bottom: 2rem;
+}
+
+.faq__accordion-text {
+  max-width: 60rem;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.048rem;
+  color: rgb(13, 13, 13, 0.6);
+}

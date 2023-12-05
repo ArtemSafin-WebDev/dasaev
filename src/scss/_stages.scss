@@ -1,0 +1,149 @@
+.stages {
+  @include blockWrapper;
+  background-color: var(--text-color);
+  color: white;
+  padding: 10rem 0;
+  margin-bottom: 10rem;
+
+  @include breakpoint(mobile) {
+    padding: 6rem 0;
+    margin-bottom: 6rem;
+  }
+}
+
+.stages__content {
+  @include blockContent;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: flex-start;
+
+  @include breakpoint(mobile) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.stages__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 7.4rem;
+  grid-row-gap: 6rem;
+  padding-right: 7rem;
+
+  @include breakpoint(mobile) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+.stages__list-item {
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    display: none;
+  }
+
+  @include breakpoint(mobile) {
+    display: grid;
+    grid-template-columns: 4.6rem 1fr;
+    grid-template-areas: "counter card";
+    align-items: flex-start;
+
+    &::before {
+      content: "[ " counter(ordered-list, decimal-leading-zero) " ]";
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 110%;
+      letter-spacing: -0.054rem;
+      text-transform: uppercase;
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.stages__card {
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "[ " counter(ordered-list, decimal-leading-zero) " ]";
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+
+  @include breakpoint(mobile) {
+    grid-area: card;
+  }
+}
+
+.stages__card-title {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.066rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+
+  @include breakpoint(mobile) {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.054rem;
+    text-transform: uppercase;
+  }
+}
+
+.stages__card-text {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.048rem;
+  color: rgba(255, 255, 255, 0.5);
+
+  @include breakpoint(mobile) {
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.048rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.stages__image-wrapper {
+  position: relative;
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 60%;
+  }
+}
+
+.stages__image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

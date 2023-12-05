@@ -1,0 +1,139 @@
+.write-us {
+  @include blockWrapper;
+  background-color: #0e0e0e;
+  color: white;
+  padding-bottom: 11rem;
+  padding-top: 8rem;
+  margin-bottom: 10rem;
+
+  @include breakpoint(mobile) {
+    margin-bottom: 6rem;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.write-us__content {
+  @include blockContent;
+  display: flex;
+  flex-direction: column;
+}
+
+.write-us__heading {
+  max-width: 111.2rem;
+  align-self: center;
+  font-size: 7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.21rem;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-align: center;
+
+  @include breakpoint(mobile) {
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.072rem;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 1rem;
+    max-width: none;
+  }
+}
+
+.write-us__text {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.066rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 4rem;
+  align-self: center;
+  max-width: 54.4rem;
+  text-align: center;
+
+  @include breakpoint(mobile) {
+    text-align: left;
+    max-width: none;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.048rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+  }
+}
+
+.write-us__arrow {
+  align-self: center;
+  width: 11.7rem;
+  height: auto;
+  margin-bottom: 3.9rem;
+
+  @include breakpoint(mobile) {
+    width: 5.2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.write-us__social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 37rem;
+  max-width: 100%;
+  align-self: center;
+
+  @include breakpoint(mobile) {
+    width: auto;
+    max-width: none;
+    align-self: stretch;
+  }
+}
+
+.write-us__social-link {
+  display: flex;
+  padding: 1.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.048rem;
+  background-color: #171717;
+  color: white;
+  transition: background-color 0.2s, color 0.2s;
+  &:link,
+  &:visited {
+    color: white;
+  }
+  svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+    }
+  }
+
+  @include breakpoint(mobile) {
+    padding: 1.4rem;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.048rem;
+  }
+}

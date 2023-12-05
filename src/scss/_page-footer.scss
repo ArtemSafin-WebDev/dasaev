@@ -1,0 +1,177 @@
+.page-footer {
+  @include blockWrapper;
+  background-color: #fff;
+  padding: 3rem 0;
+
+  @include breakpoint(mobile) {
+    padding: 1.5rem 0;
+  }
+}
+
+.page-footer__content {
+  @include blockContent;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: center;
+
+  @include breakpoint(mobile) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 1rem;
+    grid-template-areas: "requisites requisites" "phone social" "madeby madeby";
+  }
+}
+
+.page-footer__logo {
+  grid-column: 1 / 2;
+  justify-self: flex-start;
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.page-footer__logo-image {
+  width: 13rem;
+  height: auto;
+}
+
+.page-footer__made-by {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.048rem;
+
+  @include breakpointMF(small-tablet) {
+    grid-column: 2 / 4;
+  }
+
+  @include breakpoint(mobile) {
+    grid-area: madeby;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.036rem;
+  }
+}
+
+.page-footer__requisites {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.048rem;
+
+  @include breakpoint(mobile) {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.036rem;
+    grid-area: requisites;
+  }
+}
+
+.page-footer__phone {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @include breakpoint(mobile) {
+    grid-area: phone;
+    gap: 0;
+  }
+}
+
+.page-footer__wrapper {
+  @include breakpointMF(small-tablet) {
+    grid-column: 4 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  @include breakpoint(mobile) {
+    display: contents;
+  }
+}
+
+.page-footer__phone-title {
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.036rem;
+
+  @include breakpoint(mobile) {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.036rem;
+  }
+}
+
+.page-footer__phone-link {
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.036rem;
+
+  @include breakpoint(mobile) {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.036rem;
+  }
+}
+
+.page-footer__social-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @include breakpoint(mobile) {
+    grid-area: social;
+  }
+}
+
+.page-footer__social-list-item {
+  flex-shrink: 0;
+}
+
+.page-footer__social-link {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid #b7b7b7;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  @include breakpoint(mobile) {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: var(--text-color);
+    transition: fill 0.2s;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--text-color);
+      border-color: var(--text-color);
+
+      svg {
+        fill: white;
+      }
+    }
+  }
+}
