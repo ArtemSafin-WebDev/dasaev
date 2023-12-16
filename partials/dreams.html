@@ -1,7 +1,7 @@
 <section class="dreams js-dreams-slider">
     <div class="dreams__content">
         <div class="dreams__top-row">
-            <h2 class="dreams__heading">
+            <h2 class="dreams__heading js-reveal-heading">
                 Воплощаем в жизнь ваши мечты
             </h2>
             <div class="dreams__arrows">
@@ -17,7 +17,7 @@
                 </button>
             </div>
         </div>
-        <div class="dreams__slider">
+        <div class="dreams__slider js-fade-reveal">
             <div class="swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="dreams__card dreams__card--video">
+                        <div class="dreams__card">
                             <div class="dreams__card-content">
                                 <h3 class="dreams__card-title">
                                     «Исполнили наши мечты»
@@ -57,10 +57,15 @@
                                     Артур и Ангелина
                                 </div>
                             </div>
-                            <div class="dreams__card-image-wrapper">
+                            <a href="https://www.youtube.com/watch?v=otw0zQ0NSa4&ab_channel=DaveGray"
+                                class="dreams__card-image-wrapper" data-fancybox="">
                                 <img src="/images/dreams/2.webp" alt="" class="dreams__card-image">
-
-                            </div>
+                                <div class="dreams__card-play">
+                                    <svg width="14" height="14" aria-hidden="true">
+                                        <use xlink:href="#play"></use>
+                                    </svg>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="swiper-slide">

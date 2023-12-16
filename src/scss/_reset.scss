@@ -190,9 +190,9 @@ th {
 }
 
 ::selection {
-  color: white;
-  background-color: var(--text-color);
-  -webkit-text-fill-color: white;
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  -webkit-text-fill-color: var(--text-color);
 }
 
 input:-webkit-autofill,
@@ -225,4 +225,15 @@ select:-webkit-autofill:focus {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

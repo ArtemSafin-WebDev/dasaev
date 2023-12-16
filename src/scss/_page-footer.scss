@@ -2,6 +2,9 @@
   @include blockWrapper;
   background-color: #fff;
   padding: 3rem 0;
+  color: var(--text-color);
+  position: relative;
+  z-index: 30;
 
   @include breakpoint(mobile) {
     padding: 1.5rem 0;
@@ -166,11 +169,11 @@
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--text-color);
-      border-color: var(--text-color);
+      background-color: #edeae7;
+      border-color: #edeae7;
 
       svg {
-        fill: white;
+        fill: var(--text-color);
       }
     }
   }

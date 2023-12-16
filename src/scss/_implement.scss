@@ -1,9 +1,14 @@
 .implement {
   @include blockWrapper;
-  margin-bottom: 17rem;
+  padding-bottom: 17rem;
+  position: relative;
+  z-index: 6;
+  background-color: #fff;
+  color: var(--text-color);
+  padding-top: 13rem;
 
   @include breakpoint(mobile) {
-    margin-bottom: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -44,7 +49,7 @@
   letter-spacing: -0.048rem;
   align-self: center;
   margin-top: 1.5rem;
-  max-width: 50rem;
+  max-width: 54rem;
   text-align: center;
 
   @include breakpoint(mobile) {

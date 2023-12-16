@@ -3,11 +3,12 @@
   background-color: var(--text-color);
   color: white;
   padding: 10rem 0;
-  margin-bottom: 10rem;
+
+  position: relative;
+  z-index: 3;
 
   @include breakpoint(mobile) {
     padding: 6rem 0;
-    margin-bottom: 6rem;
   }
 }
 
@@ -42,6 +43,7 @@
 .stages__list-item {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   &::before {
     display: none;
@@ -97,6 +99,13 @@
   letter-spacing: -0.066rem;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  transition: color 0.2s;
+
+  @include breakpointMF(small-tablet) {
+    .stages__card.active & {
+      color: #e7af8f;
+    }
+  }
 
   @include breakpoint(mobile) {
     font-size: 1.8rem;
@@ -126,17 +135,54 @@
   }
 }
 
-.stages__image-wrapper {
+.stages__image-layers {
   position: relative;
-
-  @include breakpoint(mobile) {
-    display: none;
-  }
   &::before {
     content: "";
     display: block;
     padding-bottom: 60%;
   }
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.stages__base-layer {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease 0.2s, visibility 0.4s ease 0.2s;
+}
+
+.stages__image-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+  &.active {
+    opacity: 1;
+    visibility: inherit;
+    transition: opacity 0.4s, visibility 0.4s;
+    z-index: 10;
+  }
+}
+
+.stages__image-layers:has(.stages__image-layer.active) {
+  .stages__base-layer {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s ease 0.4s;
+  }
+}
+
+.stages__image-wrapper {
+  position: absolute;
+  inset: 0;
 }
 
 .stages__image {

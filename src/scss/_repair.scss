@@ -1,7 +1,10 @@
 .repair {
   @include blockWrapper;
   padding-bottom: 12rem;
-
+  background-color: #fff;
+  color: var(--text-color);
+  z-index: 18;
+  position: relative;
   @include breakpoint(mobile) {
     padding-bottom: 8rem;
   }

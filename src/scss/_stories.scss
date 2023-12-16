@@ -1,9 +1,14 @@
 .stories {
   @include blockWrapper;
-  margin-bottom: 17rem;
+  padding-bottom: 17rem;
+
+  background-color: #fff;
+  color: var(--text-color);
+  z-index: 17;
+  position: relative;
 
   @include breakpoint(mobile) {
-    margin-bottom: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -163,12 +168,19 @@
   margin-top: -1px;
   border: 1px solid #b7b7b7;
   background: #f8f7f5;
+  transition: background-color 0.2s;
 
   svg {
     width: 4rem;
     height: 4rem;
     fill: var(--text-color);
     transition: fill 0.2s;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #edeae7;
+    }
   }
 
   @include breakpoint(mobile) {

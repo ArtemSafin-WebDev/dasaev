@@ -1,0 +1,241 @@
+.product {
+  background-color: #edeae7;
+  position: relative;
+  z-index: 4;
+
+  @include blockWrapper;
+}
+
+.product__content {
+  @include blockContent;
+  position: relative;
+  padding-top: 11rem;
+  padding-bottom: 6rem;
+
+  @include breakpoint(mobile) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.product__heading {
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -0.12rem;
+  text-transform: uppercase;
+
+  @include breakpointMF(small-tablet) {
+    max-width: 50rem;
+    position: absolute;
+    left: 0;
+  }
+
+  @include breakpoint(mobile) {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.054rem;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+
+    br {
+      display: none;
+    }
+  }
+}
+
+.product__list {
+  @include breakpointMF(small-tablet) {
+    position: absolute;
+    z-index: 5;
+    top: 8.2rem;
+    right: 0;
+    width: 45rem;
+  }
+
+  @include breakpoint(mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+}
+.product__list-item {
+  &::before {
+    display: none;
+  }
+  @include breakpointMF(small-tablet) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0s linear 0.4s;
+    z-index: 5;
+
+    &.active {
+      z-index: 10;
+      opacity: 1;
+      visibility: inherit;
+      transition: opacity 0.4s, visibility 0.4s;
+    }
+  }
+}
+
+.product__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @include breakpoint(mobile) {
+    gap: 0;
+
+    &::before {
+      content: "[ " counter(ordered-list, decimal-leading-zero) " ]";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      padding: 0.35rem 1rem;
+      color: white;
+      border-radius: 10rem;
+      background-color: #0e0e0e;
+      margin-bottom: 1rem;
+      min-width: 7.1rem;
+      text-align: center;
+      align-self: flex-start;
+    }
+  }
+}
+
+.product__mobile-image-wrapper {
+  display: none;
+
+  @include breakpoint(mobile) {
+    position: relative;
+    display: block;
+    margin-top: 1.5rem;
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+}
+
+.product__mobile-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product__card-title {
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.048rem;
+
+  @include breakpoint(mobile) {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.036rem;
+    margin-bottom: 0.3rem;
+  }
+}
+
+.product__card-text {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.048rem;
+  color: rgba(14, 14, 14, 0.7);
+  max-width: 28rem;
+
+  @include breakpoint(mobile) {
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.048rem;
+    max-width: none;
+    margin-bottom: 0.2rem;
+  }
+}
+
+.product__sprite {
+  width: 60rem;
+  margin: 0 auto;
+
+  position: relative;
+  border: 1px solid #b7b7b7;
+  border-radius: 50%;
+
+  width: 60rem;
+
+  canvas {
+    width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.product__item {
+  position: absolute;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -0.04rem;
+  text-transform: uppercase;
+  border-radius: 10rem;
+  background: white;
+  color: #0e0e0e;
+  padding: 1.9rem;
+  width: 15rem;
+  text-align: center;
+
+  &.active {
+    background-color: #0e0e0e;
+    color: white;
+  }
+
+  &:nth-child(1) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 5;
+  }
+  &:nth-child(2) {
+    top: 50%;
+    left: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 5;
+  }
+  // &:nth-child(3) {
+  //   top: 100%;
+  //   left: 50%;
+  //   transform: translateX(-50%) translateY(-50%);
+  //   z-index: 5;
+  // }
+  &:nth-child(3) {
+    top: 50%;
+    left: 0;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 5;
+  }
+}

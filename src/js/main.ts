@@ -12,13 +12,21 @@ import implementSlider from "./implementSlider";
 import storiesSlider from "./storiesSlider";
 import indiv from "./indiv";
 import specialistsSlider from "./specialistsSlider";
+import smoothScrolling from "./smoothScrolling";
+import animations from "./animations";
+import fancybox from "./fancybox";
+import stages from "./stages";
+import loader from "./loader";
 
 document.addEventListener("DOMContentLoaded", () => {
+  smoothScrolling();
+  loader();
   accordions();
   selects();
   modals();
   forms();
   menu();
+  stages();
   clientsSlider();
   dreamsSlider();
   creationSlider();
@@ -26,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   storiesSlider();
   indiv();
   specialistsSlider();
+  animations();
+  fancybox();
 });
 
 window.addEventListener("load", () => {

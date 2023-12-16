@@ -2,12 +2,12 @@
   @include blockWrapper;
   background-color: #0e0e0e;
   color: white;
+  position: relative;
+  z-index: 13;
   padding-bottom: 11rem;
   padding-top: 8rem;
-  margin-bottom: 10rem;
 
   @include breakpoint(mobile) {
-    margin-bottom: 6rem;
     padding-top: 4rem;
     padding-bottom: 6rem;
   }

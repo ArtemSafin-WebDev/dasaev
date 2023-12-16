@@ -1,9 +1,12 @@
 .studio {
   @include blockWrapper;
-  margin-bottom: 18rem;
-
+  padding-bottom: 18rem;
+  position: relative;
+  z-index: 7;
+  background-color: #fff;
+  color: var(--text-color);
   @include breakpoint(mobile) {
-    margin-bottom: 8rem;
+    padding-bottom: 8rem;
   }
 }
 

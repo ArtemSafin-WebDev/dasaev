@@ -1,5 +1,5 @@
 export default function modals() {
-  const OPEN_BTN_SELECTOR = ".js-modal-open";
+  const OPEN_BTN_SELECTOR = "a[href^='#']";
   const CLOSE_BTN_SELECTOR = ".js-modal-close";
 
   document.addEventListener("click", (event) => {
@@ -14,6 +14,7 @@ export default function modals() {
         : target.closest<HTMLAnchorElement>(OPEN_BTN_SELECTOR);
       if (!btn) return;
       const hash = btn.hash;
+      if (!hash) return;
       const modal = document.querySelector<HTMLElement>(`.js-modal${hash}`);
       if (modal) document.body.classList.remove("menu-open");
       const otherModals = Array.from(

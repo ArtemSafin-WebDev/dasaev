@@ -2,6 +2,11 @@
   @include blockWrapper;
   padding-bottom: 10rem;
 
+  background-color: #fff;
+  color: var(--text-color);
+  z-index: 21;
+  position: relative;
+
   @include breakpoint(mobile) {
     padding-bottom: 8rem;
   }

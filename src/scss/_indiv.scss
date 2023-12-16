@@ -5,6 +5,8 @@
   background-color: #0e0e0e;
   color: white;
   margin-top: -1px;
+  position: relative;
+  z-index: 12;
 
   @include breakpoint(mobile) {
     padding-top: 4rem;
@@ -38,7 +40,7 @@
   line-height: 110%;
   letter-spacing: -0.12rem;
   text-transform: uppercase;
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
 
   @include breakpoint(mobile) {
     font-size: 1.8rem;
@@ -192,8 +194,8 @@
   &:not(.swiper-button-disabled) {
     @media (hover: hover) {
       &:hover {
-        background-color: white;
-        border-color: white;
+        background-color: #edeae7;
+        border-color: #edeae7;
 
         svg {
           fill: var(--text-color);

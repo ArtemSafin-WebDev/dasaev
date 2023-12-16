@@ -4,6 +4,10 @@
   padding-top: 13rem;
   padding-bottom: 9rem;
 
+  color: var(--text-color);
+  z-index: 23;
+  position: relative;
+
   @include breakpoint(mobile) {
     padding-top: 4rem;
     padding-bottom: 3rem;

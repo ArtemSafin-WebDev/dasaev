@@ -1,6 +1,10 @@
 .new-life {
   @include blockWrapper;
   background-color: #edeae7;
+
+  color: var(--text-color);
+  z-index: 19;
+  position: relative;
 }
 
 .new-life__content {

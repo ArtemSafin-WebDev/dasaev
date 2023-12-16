@@ -1,9 +1,14 @@
 .dreams {
   @include blockWrapper;
-  margin-bottom: 17rem;
-
+  padding-bottom: 17rem;
+  padding-top: 10rem;
+  background-color: #fff;
+  color: var(--text-color);
+  z-index: 16;
+  position: relative;
   @include breakpoint(mobile) {
-    margin-bottom: 8rem;
+    padding-bottom: 8rem;
+    padding-top: 6rem;
   }
 }
 
@@ -80,10 +85,10 @@
   &:not(.swiper-button-disabled) {
     @media (hover: hover) {
       &:hover {
-        background-color: var(--text-color);
-        border-color: var(--text-color);
+        background-color: #edeae7;
+        border-color: #edeae7;
         svg {
-          fill: white;
+          fill: var(--text-color);
         }
       }
     }
@@ -288,6 +293,33 @@
       &.swiper-pagination-bullet-active {
         background-color: #0e0e0e;
       }
+    }
+  }
+}
+
+.dreams__card-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: background-color 0.2s;
+  background-clip: padding-box;
+  display: grid;
+  place-items: center;
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: white;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
     }
   }
 }

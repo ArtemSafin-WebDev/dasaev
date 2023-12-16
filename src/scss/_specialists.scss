@@ -1,6 +1,8 @@
 .specialists {
   background-color: #0e0e0e;
   color: white;
+  position: relative;
+  z-index: 9;
 
   padding-bottom: 6rem;
 
@@ -145,7 +147,13 @@
   z-index: 10;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-
+  transition: background-color 0.2s;
+  background-clip: padding-box;
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
   @include breakpoint(mobile) {
     width: 10rem;
     height: 10rem;

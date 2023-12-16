@@ -1,9 +1,13 @@
 .clients {
   @include blockWrapper;
-  margin-bottom: 17rem;
+  padding-bottom: 17rem;
+  position: relative;
+  z-index: 7;
+  background-color: #fff;
+  color: var(--text-color);
 
   @include breakpoint(mobile) {
-    margin-bottom: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -137,10 +141,10 @@
   &:not(.swiper-button-disabled) {
     @media (hover: hover) {
       &:hover {
-        background-color: var(--text-color);
-        border-color: var(--text-color);
+        background-color: #edeae7;
+        border-color: #edeae7;
         svg {
-          fill: white;
+          fill: var(--text-color);
         }
       }
     }
