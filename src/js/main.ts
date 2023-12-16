@@ -18,9 +18,8 @@ import fancybox from "./fancybox";
 import stages from "./stages";
 import loader from "./loader";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   smoothScrolling();
-  loader();
   accordions();
   selects();
   modals();
@@ -34,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
   storiesSlider();
   indiv();
   specialistsSlider();
-  animations();
   fancybox();
+  await animations();
+  loader();
 });
 
 window.addEventListener("load", () => {

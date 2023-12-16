@@ -1,10 +1,11 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "./vendor/gsap/SplitText";
+import { supportsAvif } from "./utils";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export default function animations() {
+export default async function animations() {
   let mm = gsap.matchMedia();
 
   const stagesCardsTimeline = gsap.timeline({
@@ -45,7 +46,11 @@ export default function animations() {
 
     const frameCount = 193;
 
-    const currentFrame = (index: number) => `/images/ring/${index}.avif`;
+    const format = await supportsAvif();
+
+    // console.log("Format", format);
+
+    const currentFrame = (index: number) => `/images/ring/${index}.${format}`;
 
     const items = Array.from(
       products.querySelectorAll<HTMLElement>(".product__item")
@@ -54,16 +59,39 @@ export default function animations() {
       products.querySelectorAll<HTMLLIElement>(".product__list-item")
     );
 
-    const images: HTMLImageElement[] = [];
+    const imageLoaders: Promise<HTMLImageElement>[] = [];
     const ring = {
       frame: 6,
     };
 
     for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      img.src = currentFrame(i);
-      images.push(img);
+      imageLoaders.push(
+        new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = currentFrame(i);
+
+          if (img.complete) {
+            resolve(img);
+          }
+        })
+      );
     }
+
+    const loadedImages = await Promise.allSettled(imageLoaders);
+
+    // console.log("Promises", loadedImages);
+
+    const images: (HTMLImageElement | null)[] = loadedImages.map((item) => {
+      if (item.status === "fulfilled") {
+        return item.value;
+      } else {
+        return null;
+      }
+    });
+
+    // console.log("Settled images", images);
 
     mm.add("(min-width: 641px)", () => {
       gsap.to(ring, {
@@ -94,11 +122,14 @@ export default function animations() {
     });
 
     function render() {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(images[ring.frame], 0, 0, canvas.width, canvas.height);
+      const frameToDraw = images[ring.frame];
+      if (frameToDraw !== null) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(frameToDraw, 0, 0, canvas.width, canvas.height);
+      }
     }
 
-    images[0].onload = render;
+    render();
   }
 
   const headings = Array.from(
