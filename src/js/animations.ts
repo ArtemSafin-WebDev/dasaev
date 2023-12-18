@@ -39,6 +39,8 @@ export default async function animations() {
   if (products) {
     const canvas = products.querySelector("canvas")!;
 
+    const url = products.getAttribute("data-url");
+
     const context = canvas.getContext("2d")!;
 
     canvas.width = 600;
@@ -50,7 +52,7 @@ export default async function animations() {
 
     // console.log("Format", format);
 
-    const currentFrame = (index: number) => `/images/ring/${index}.${format}`;
+    const currentFrame = (index: number) => `${url}/${index}.${format}`;
 
     const items = Array.from(
       products.querySelectorAll<HTMLElement>(".product__item")
