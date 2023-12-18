@@ -29,20 +29,25 @@ export default function smoothScrolling() {
 
   document.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    if (target.matches(".js-anchor") || target.closest(".js-anchor")) {
-      const link = target.matches(".js-anchor")
+    if (target.matches("a[href^='#']") || target.closest("a[href^='#']")) {
+      const link = target.matches("a[href^='#']")
         ? (target as HTMLAnchorElement)
-        : target.closest<HTMLAnchorElement>(".js-anchor");
+        : target.closest<HTMLAnchorElement>("a[href^='#']");
       if (!link) return;
-      event.preventDefault();
+
       const hash = link.hash;
+
+      const element = document.querySelector(hash);
+      if (element) {
+        event.preventDefault();
+        document.body.classList.toggle("menu-open");
+      }
       if (lenis) {
         lenis.scrollTo(hash, {
-          offset: -1 * (pageHeader ? pageHeader.offsetHeight + 20 : 0),
+          offset: -1 * (pageHeader ? pageHeader.offsetHeight : 0),
           duration: 1.5,
         });
       } else {
-        const element = document.querySelector(hash);
         if (element) {
           gsap.to(window, {
             duration: 1.5,
@@ -50,7 +55,7 @@ export default function smoothScrolling() {
             scrollTo: {
               y: element,
               autoKill: false,
-              offsetY: pageHeader ? pageHeader.offsetHeight + 20 : 0,
+              offsetY: pageHeader ? pageHeader.offsetHeight : 0,
             },
           });
         }

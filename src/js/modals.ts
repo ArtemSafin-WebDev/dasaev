@@ -8,7 +8,6 @@ export default function modals() {
       target.matches(OPEN_BTN_SELECTOR) ||
       target.closest(OPEN_BTN_SELECTOR)
     ) {
-      event.preventDefault();
       const btn = target.matches(OPEN_BTN_SELECTOR)
         ? (target as HTMLAnchorElement)
         : target.closest<HTMLAnchorElement>(OPEN_BTN_SELECTOR);
@@ -17,6 +16,7 @@ export default function modals() {
       if (!hash) return;
       const modal = document.querySelector<HTMLElement>(`.js-modal${hash}`);
       if (modal) document.body.classList.remove("menu-open");
+      event.preventDefault();
       const otherModals = Array.from(
         document.querySelectorAll<HTMLElement>(".js-modal")
       );
