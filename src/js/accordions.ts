@@ -40,12 +40,6 @@ export default function accordions() {
 
       event.preventDefault();
 
-      if (
-        element?.classList.contains("js-accordion-mobile") &&
-        !window.matchMedia("(max-width: 640px)").matches
-      )
-        return;
-
       if (element?.hasAttribute("data-close-other")) {
         elements.forEach((otherElement) => {
           if (otherElement !== element) {
