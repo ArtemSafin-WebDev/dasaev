@@ -162,19 +162,29 @@
 
 .stories__slider-card-social {
   display: grid;
-  place-items: center;
-  aspect-ratio: 1 / 1;
+  grid-template-columns: 1fr;
+  grid-template-areas: "stack";
   margin-left: -1px;
   margin-top: -1px;
   border: 1px solid #b7b7b7;
   background: #f8f7f5;
   transition: background-color 0.2s;
 
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    grid-area: stack;
+  }
+
   svg {
     width: 4rem;
     height: 4rem;
     fill: var(--text-color);
     transition: fill 0.2s;
+    grid-area: stack;
+    align-self: center;
+    justify-self: center;
   }
 
   @media (hover: hover) {

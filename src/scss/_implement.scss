@@ -9,6 +9,7 @@
 
   @include breakpoint(mobile) {
     padding-bottom: 8rem;
+    padding-top: 6rem;
   }
 }
 
@@ -38,6 +39,7 @@
     letter-spacing: -0.072rem;
     text-transform: uppercase;
     text-align: left;
+    align-self: stretch;
   }
 }
 

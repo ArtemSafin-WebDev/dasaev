@@ -29,6 +29,7 @@ export default function loader() {
       ease: "power3.out",
       duration: 1,
       autoAlpha: 0,
+      clearProps: "all",
     });
 
     tl.fromTo(

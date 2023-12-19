@@ -178,14 +178,21 @@
       grid-area: stack;
       border: 1px solid var(--text-color);
       border-radius: 50%;
-      transition: background-color 0.2s, border-color 0.2s;
+      transition: background-color 0.2s, border-color 0.2s, transform 0.2s,
+        width 0.2s, height 0.2s;
+      align-self: center;
+      justify-self: center;
+      width: 100%;
+      height: 100%;
     }
 
     @media (hover: hover) {
       &:hover {
         color: var(--text-color);
+
         &::after {
-          background: white;
+          width: 85%;
+          height: 85%;
         }
       }
     }
