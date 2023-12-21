@@ -74,23 +74,22 @@
 .swiper-slide--wide {
   @include breakpointMF(small-tablet) {
     grid-column: span 2;
-    .creation__slider-card {
-      background: #f8f7f5;
 
-      .creation__slider-card-image-wrapper {
-        width: 30rem;
+    .creation__slider-card-image-wrapper {
+      &::before {
+        padding-bottom: 47.9%;
       }
     }
   }
 }
 
 .creation__slider-card {
-  padding: 3rem;
+  padding: 1.5rem;
 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 1.8rem;
+  gap: 1.5rem;
   min-height: 40rem;
   position: relative;
 
@@ -112,7 +111,6 @@
 
 .creation__slider-card-image-wrapper {
   position: relative;
-  margin-bottom: auto;
   max-width: 100%;
   width: 100%;
   align-self: center;
@@ -211,6 +209,8 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+  display: none;
 }
 
 .creation__slider-card-popover-bg {
