@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "./vendor/gsap/SplitText";
-import { supportsAvif } from "./utils";
+// import { supportsAvif } from "./utils";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -37,101 +37,101 @@ export default async function animations() {
   const products = document.querySelector<HTMLElement>(".product");
 
   if (products) {
-    const canvas = products.querySelector("canvas")!;
-
-    const url = products.getAttribute("data-url");
-
-    const context = canvas.getContext("2d")!;
-
-    canvas.width = 600;
-    canvas.height = 600;
-
-    const frameCount = 193;
-
-    const format = await supportsAvif();
-
-    // console.log("Format", format);
-
-    const currentFrame = (index: number) => `${url}/${index}.${format}`;
-
     const items = Array.from(
       products.querySelectorAll<HTMLElement>(".product__item")
     );
-    const listItems = Array.from(
+    const tabs = Array.from(
       products.querySelectorAll<HTMLLIElement>(".product__list-item")
     );
 
-    const imageLoaders: Promise<HTMLImageElement>[] = [];
-    const ring = {
-      frame: 6,
+    const setActiveTab = (index: number) => {
+      items.forEach((item) => item.classList.remove("active"));
+      tabs.forEach((tab) => tab.classList.remove("active"));
+      items[index]?.classList.add("active");
+      tabs[index]?.classList.add("active");
     };
 
-    for (let i = 0; i < frameCount; i++) {
-      imageLoaders.push(
-        new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = reject;
-          img.src = currentFrame(i);
+    setActiveTab(0);
 
-          if (img.complete) {
-            resolve(img);
-          }
-        })
-      );
-    }
+    items.forEach((item, index) =>
+      item.addEventListener("click", (event) => {
+        event.preventDefault();
+        setActiveTab(index);
+      })
+    );
 
-    const loadedImages = await Promise.allSettled(imageLoaders);
-
-    // console.log("Promises", loadedImages);
-
-    const images: (HTMLImageElement | null)[] = loadedImages.map((item) => {
-      if (item.status === "fulfilled") {
-        return item.value;
-      } else {
-        return null;
-      }
-    });
-
-    // console.log("Settled images", images);
-
-    mm.add("(min-width: 641px)", () => {
-      gsap.to(ring, {
-        frame: frameCount - 1,
-        snap: "frame",
-        ease: "none",
-        scrollTrigger: {
-          trigger: products,
-          start: "bottom bottom",
-          end: "+=2500",
-          markers: false,
-          pin: ".scroll-pin-wrapper",
-          scrub: 0.5,
-          pinSpacing: true,
-          onUpdate: ({ progress }) => {
-            const progressIndex = Math.ceil(progress * items.length) - 1;
-
-            items.forEach((item) => item.classList.remove("active"));
-            items[progressIndex]?.classList.add("active");
-            listItems.forEach((item) => item.classList.remove("active"));
-            listItems[progressIndex]?.classList.add("active");
-
-            console.log("Progress index", progressIndex);
-          },
-        },
-        onUpdate: render, // use animation onUpdate instead of scrollTrigger's onUpdate
-      });
-    });
-
-    function render() {
-      const frameToDraw = images[ring.frame];
-      if (frameToDraw !== null) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(frameToDraw, 0, 0, canvas.width, canvas.height);
-      }
-    }
-
-    render();
+    // const canvas = products.querySelector("canvas")!;
+    // const url = products.getAttribute("data-url");
+    // const context = canvas.getContext("2d")!;
+    // canvas.width = 600;
+    // canvas.height = 600;
+    // const frameCount = 193;
+    // const format = await supportsAvif();
+    // const currentFrame = (index: number) => `${url}/${index}.${format}`;
+    // const items = Array.from(
+    //   products.querySelectorAll<HTMLElement>(".product__item")
+    // );
+    // const listItems = Array.from(
+    //   products.querySelectorAll<HTMLLIElement>(".product__list-item")
+    // );
+    // const imageLoaders: Promise<HTMLImageElement>[] = [];
+    // const ring = {
+    //   frame: 6,
+    // };
+    // for (let i = 0; i < frameCount; i++) {
+    //   imageLoaders.push(
+    //     new Promise((resolve, reject) => {
+    //       const img = new Image();
+    //       img.onload = () => resolve(img);
+    //       img.onerror = reject;
+    //       img.src = currentFrame(i);
+    //       if (img.complete) {
+    //         resolve(img);
+    //       }
+    //     })
+    //   );
+    // }
+    // const loadedImages = await Promise.allSettled(imageLoaders);
+    // const images: (HTMLImageElement | null)[] = loadedImages.map((item) => {
+    //   if (item.status === "fulfilled") {
+    //     return item.value;
+    //   } else {
+    //     return null;
+    //   }
+    // });
+    // mm.add("(min-width: 641px)", () => {
+    //   gsap.to(ring, {
+    //     frame: frameCount - 1,
+    //     snap: "frame",
+    //     ease: "none",
+    //     scrollTrigger: {
+    //       trigger: products,
+    //       start: "bottom bottom",
+    //       end: "+=2500",
+    //       markers: false,
+    //       pin: ".scroll-pin-wrapper",
+    //       scrub: 0.5,
+    //       pinSpacing: true,
+    //       onUpdate: ({ progress }) => {
+    //         const progressIndex = Math.ceil(progress * items.length) - 1;
+    //         items.forEach((item) => item.classList.remove("active"));
+    //         items[progressIndex]?.classList.add("active");
+    //         listItems.forEach((item) => item.classList.remove("active"));
+    //         listItems[progressIndex]?.classList.add("active");
+    //         console.log("Progress index", progressIndex);
+    //       },
+    //     },
+    //     onUpdate: render, // use animation onUpdate instead of scrollTrigger's onUpdate
+    //   });
+    // });
+    // function render() {
+    //   const frameToDraw = images[ring.frame];
+    //   if (frameToDraw !== null) {
+    //     context.clearRect(0, 0, canvas.width, canvas.height);
+    //     context.drawImage(frameToDraw, 0, 0, canvas.width, canvas.height);
+    //   }
+    // }
+    // render();
   }
 
   const headings = Array.from(

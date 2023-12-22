@@ -194,6 +194,24 @@
   }
 }
 
+.product__image-wrapper {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.product__image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .product__item {
   position: absolute;
   font-size: 2rem;
