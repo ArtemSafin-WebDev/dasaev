@@ -22,6 +22,7 @@
 .new-life__image-wrapper {
   grid-column: 1 / 5;
   margin-left: -6rem;
+  margin-left: calc((100vw - 100% * 2) / 2 * -1);
 
   @include breakpoint(mobile) {
     margin: 0;
