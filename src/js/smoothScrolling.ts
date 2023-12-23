@@ -8,6 +8,10 @@ import { getScrollLookup } from "./getScrollup";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function smoothScrolling() {
+  if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+  }
+
   let lenis: Lenis | null = null;
 
   if (!isTouch()) {
@@ -35,18 +39,23 @@ export default function smoothScrolling() {
 
   document.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    if (target.matches("a[href^='#']") || target.closest("a[href^='#']")) {
-      const link = target.matches("a[href^='#']")
+    if (target.matches("a") || target.closest("a")) {
+      const link = target.matches("a")
         ? (target as HTMLAnchorElement)
-        : target.closest<HTMLAnchorElement>("a[href^='#']");
+        : target.closest<HTMLAnchorElement>("a");
       if (!link) return;
 
       const hash = link.hash;
 
+      if (!hash) return;
+
       const element = document.querySelector(hash);
       if (element) {
+        if (element.matches(".js-modal")) return;
         event.preventDefault();
-        document.body.classList.toggle("menu-open");
+        document.body.classList.remove("menu-open");
+
+        history.replaceState({}, "", hash);
 
         gsap.to(window, {
           duration: 1.5,
@@ -60,4 +69,27 @@ export default function smoothScrolling() {
       }
     }
   });
+
+  if (window.location.hash) {
+    window.addEventListener("load", () => {
+      const hash = window.location.hash;
+
+      if (!hash) return;
+      const element = document.querySelector(hash);
+      if (element) {
+        console.log("Start element", element);
+        if (element.matches(".js-modal")) return;
+        document.body.classList.remove("menu-open");
+        gsap.to(window, {
+          duration: 0.4,
+          ease: "none",
+          scrollTo: {
+            y: getPosition(element),
+            autoKill: false,
+            offsetY: pageHeader ? pageHeader.offsetHeight : 0,
+          },
+        });
+      }
+    });
+  }
 }

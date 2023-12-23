@@ -8,22 +8,22 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export default async function animations() {
   let mm = gsap.matchMedia();
 
-  const stagesCardsTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".stages__list",
-      start: "top bottom",
-    },
-  });
-
-  stagesCardsTimeline.from(".stages__card", {
-    yPercent: 100,
-    duration: 0.8,
-    stagger: 0.2,
-    autoAlpha: 0,
-    ease: "power2.out",
-  });
-
   mm.add("(min-width: 641px)", () => {
+    const stagesCardsTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".stages__list",
+        start: "top bottom",
+      },
+    });
+
+    stagesCardsTimeline.from(".stages__card", {
+      yPercent: 100,
+      duration: 0.8,
+      stagger: 0.2,
+      autoAlpha: 0,
+      ease: "power2.out",
+    });
+
     ScrollTrigger.create({
       trigger: ".intro__top",
       start: "top top",
@@ -31,6 +31,22 @@ export default async function animations() {
       pin: true,
       pinSpacing: false,
       markers: false,
+    });
+  });
+  mm.add("(max-width: 640px)", () => {
+    const stagesCardsTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".stages__list",
+        start: "top bottom",
+      },
+    });
+
+    stagesCardsTimeline.from(".stages__list-item", {
+      y: 20,
+      duration: 0.8,
+      stagger: 0.2,
+      autoAlpha: 0,
+      ease: "power2.out",
     });
   });
 
