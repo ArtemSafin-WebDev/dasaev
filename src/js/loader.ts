@@ -4,6 +4,7 @@ import { SplitText } from "./vendor/gsap/SplitText";
 gsap.registerPlugin(SplitText);
 
 export default function loader() {
+  if (!document.body.classList.contains("has-loader")) return;
   setTimeout(() => {
     document.body.classList.remove("has-loader");
 

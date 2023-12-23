@@ -1,4 +1,4 @@
-<header class="page-header">
+<header class="page-header {{#if darkHeader}} page-header--dark {{/if}}">
     <div class="page-header__content">
         <div class="page-header__menu" data-lenis-prevent="">
             <div class="page-header__menu-inner">
@@ -74,9 +74,12 @@
                 </ul>
             </div>
         </div>
+
         <a href="#" class="page-header__logo">
             <img src="/images/logo-white.webp" alt="" class="page-header__logo-image">
+            <img src="/images/logo-dark.webp" alt="" class="page-header__logo-image">
         </a>
+
         <button class="page-header__burger">
             <span></span>
             <span></span>
